@@ -2,7 +2,7 @@ ThisBuild / organizationName := "Greenfossil Pte Ltd"
 ThisBuild / organizationHomepage := Some(url("https://greenfossil.com/"))
 
 ThisBuild / developers := List(
-  Developer("greenfossil", "Greenfossil Pte Ltd", "dev@greenfossil.com", url("https://github.com/Greenfossil"))
+  Developer("greenfossil", "Greenfossil Pte Ltd", "devadmin@greenfossil.com", url("https://github.com/Greenfossil"))
 )
 
 ThisBuild / licenses := List(
