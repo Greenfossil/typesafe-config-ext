@@ -1,4 +1,4 @@
-val scala3Version = "3.2.1"
+val scala3Version = "3.2.0"
 
 lazy val configExt = project
   .in(file("."))
