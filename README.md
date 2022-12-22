@@ -1,8 +1,10 @@
 # typesafe-config-ext
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Greenfossil/typesafe-config-ext/Run%20tests)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Greenfossil/typesafe-config-ext/run-tests.yml?branch=master)
 ![](https://img.shields.io/github/license/Greenfossil/typesafe-config-ext)
 ![](https://img.shields.io/github/v/tag/Greenfossil/typesafe-config-ext)
+![Maven Central](https://img.shields.io/maven-central/v/com.greenfossil/typesafe-config-ext_3)
+[![javadoc](https://javadoc.io/badge2/com.greenfossil/typesafe-config-ext_3/javadoc.svg)](https://javadoc.io/doc/com.greenfossil/typesafe-config-ext_3)
 
 This is the official Greenfossil Scala library for Typesafe-config-ext.
 
