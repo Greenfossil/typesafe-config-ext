@@ -89,116 +89,221 @@ object DefaultConfig {
 }
 
 extension (config: Config)
+  /**
+   *
+   * @param path
+   * @return None if non declared or null
+   */
   def getStringOpt(path: String): Option[String] =
-    if config.getIsNull(path) then None else Option(config.getString(path))
+    if !config.hasPath(path) || config.getIsNull(path) then None
+    else Option(config.getString(path))
 
+  /**
+   *
+   * @param path
+   * @return None if non declared or null
+   */
   def getBooleanOpt(path: String): Option[Boolean] =
-    if config.getIsNull(path) then None else Option(config.getBoolean(path))
+    if config.getIsNull(path) || config.getIsNull(path) then None else Option(config.getBoolean(path))
 
+  /**
+   *
+   * @param path
+   * @return None if non declared or null
+   */
   def getIntOpt(path: String): Option[Int] =
-    if config.getIsNull(path) then None else Option(config.getInt(path))
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None else Option(config.getInt(path))
 
+  /**
+   *
+   * @param path
+   * @return None if non declared or null
+   */
   def getLongOpt(path: String): Option[Long] =
-    if config.getIsNull(path) then None else Option(config.getLong(path))
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None else Option(config.getLong(path))
 
+  /**
+   *
+   * @param path
+   * @return None if non declared or null
+   */
   def getDoubleOpt(path: String): Option[Double] =
-    if config.getIsNull(path) then None else Option(config.getDouble(path))
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None else Option(config.getDouble(path))
 
+  /**
+   *
+   * @param path
+   * @return None if non declared or null
+   */
   def getNumberOpt(path: String): Option[Number] =
-    if config.getIsNull(path) then None else Option(config.getNumber(path))
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None else Option(config.getNumber(path))
 
+  /**
+   *
+   * @param path
+   * @return None if non declared or null
+   */
   def getDurationOpt(path: String): Option[Duration] =
-    if config.getIsNull(path) then None else Option(config.getDuration(path))
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None else Option(config.getDuration(path))
 
+  /**
+   *
+   * @param path
+   * @return None if non declared or null
+   */
   def getPeriodOpt(path: String): Option[Period] =
-    if config.getIsNull(path) then None else Option(config.getPeriod(path))
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None else Option(config.getPeriod(path))
 
+  /**
+   *
+   * @param path
+   * @return None if non declared or null
+   */
   def getTemporalOption(path: String): Option[TemporalAmount] =
-    if config.getIsNull(path) then None else Option(config.getTemporal(path))
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None else Option(config.getTemporal(path))
 
+  /**
+   *
+   * @param clazz
+   * @param path
+   * @tparam T
+   * @return  None if non declared or null
+   */
   def getEnumOpt[T <: Enum[T]](clazz: Class[T], path: String): Option[T] =
-    if config.getIsNull(path) then None else Option(config.getEnum(clazz, path))
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None else Option(config.getEnum(clazz, path))
 
+  /**
+   *
+   * @param path
+   * @return None if list is empty
+   */
   def getBooleanListOpt(path: String): Option[List[Boolean]] =
-    if config.getIsNull(path)
-    then None
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None
     else
       Some(config.getBooleanList(path)
         .asScala
         .toList
         .map(x => Boolean.unbox(x)))
+        .filter(_.nonEmpty)
 
+  /**
+   *
+   * @param path
+   * @return None if list is empty
+   */
   def getIntListOpt(path: String): Option[List[Int]] =
-    if config.getIsNull(path)
-    then None
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None
     else
       Some(config.getIntList(path)
         .asScala
         .toList
         .map(x => Int.unbox(x)))
+        .filter(_.nonEmpty)
 
+  /**
+   *
+   * @param path
+   * @return None if list is empty
+   */
   def getLongListOpt(path: String): Option[List[Long]] =
-    if config.getIsNull(path)
-    then None
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None
     else
       Some(config.getLongList(path)
         .asScala
         .toList
         .map(x => Long.unbox(x)))
+        .filter(_.nonEmpty)
 
+  /**
+   *
+   * @param path
+   * @return None if list is empty
+   */
   def getDoubleList(path: String): Option[List[Double]] =
-    if config.getIsNull(path)
-    then None
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None
     else
       Some(config.getDoubleList(path)
         .asScala
         .toList
         .map(x => Double.unbox(x)))
+        .filter(_.nonEmpty)
 
+  /**
+   *
+   * @param path
+   * @return None if list is empty
+   */
   def getNumberList(path: String): Option[List[Number]] =
-    if config.getIsNull(path)
-    then None
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None
     else
       Some(config.getNumberList(path)
         .asScala
         .toList)
+        .filter(_.nonEmpty)
 
+  /**
+   *
+   * @param path
+   * @return None if list is empty
+   */
   def getStringListOpt(path: String): Option[List[String]] =
-    if config.getIsNull(path)
-    then None
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None
     else
       Some(config.getStringList(path)
         .asScala
         .toList)
+        .filter(_.nonEmpty)
 
+  /**
+   *
+   * @param path
+   * @return None if list is empty
+   */
   def getDurationListOpt(path: String): Option[List[Duration]] =
-    if config.getIsNull(path)
-    then None
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None
     else
       Some(config.getDurationList(path)
         .asScala
         .toList)
+        .filter(_.nonEmpty)
 
+  /**
+   *
+   * @param clazz
+   * @param path
+   * @tparam T
+   * @return None if list is empty
+   */
   def getEnumListOpt[T <: Enum[T]](clazz: Class[T], path: String): Option[List[T]] =
-    if config.getIsNull(path)
-    then None
+    if !config.hasPathOrNull(path) || config.getIsNull(path)  then None
     else
       Some(config.getEnumList(clazz, path)
         .asScala
         .toList)
+        .filter(_.nonEmpty)
 
+  /**
+   *
+   * @param path
+   * @return None if list is empty
+   */
   def getConfigListOpt(path: String): Option[List[Config]] =
-    if config.getIsNull(path)
-    then None
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None
     else
       Some(config.getConfigList(path)
         .asScala
         .toList)
+        .filter(_.nonEmpty)
 
+  /**
+   *
+   * @param path
+   * @return None if list is empty
+   */
   def getAnyRefListOpt(path: String): Option[List[AnyRef]] =
-    if config.getIsNull(path)
-    then None
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None
     else
       Some(config.getAnyRefList(path)
         .asScala
         .toList)
+        .filter(_.nonEmpty)
