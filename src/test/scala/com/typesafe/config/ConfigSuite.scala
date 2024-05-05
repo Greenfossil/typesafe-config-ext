@@ -20,33 +20,33 @@ class ConfigSuite extends munit.FunSuite {
 
   test("load with config using load()"){
     val config = ConfigFactory.load()
-    println(s"config.root().render() = ${config.root().render()}")
+//    println(s"config.root().render() = ${config.root().render()}")
     val appName = config.getString("app.name")
     val appRef = config.getString("app.ver")
-    println(s"appName = ${appName}")
-    println(s"appRef = ${appRef}")
+//    println(s"appName = ${appName}")
+//    println(s"appRef = ${appRef}")
     assertNoDiff(appName, "app-name")
     assertNoDiff(appRef, "ref-ver")
   }
 
   test("load with config load(basename)"){
     val config = ConfigFactory.load("application")
-    println(s"config.root().render() = ${config.root().render()}")
+//    println(s"config.root().render() = ${config.root().render()}")
     val appName = config.getString("app.name")
     val appRef = config.getString("app.ver")
-    println(s"appName = ${appName}")
-    println(s"appRef = ${appRef}")
+//    println(s"appName = ${appName}")
+//    println(s"appRef = ${appRef}")
     assertNoDiff(appName, "app-name")
     assertNoDiff(appRef, "ref-ver")
   }
 
   test("load with config load(basename-1) "){
     val config = ConfigFactory.load("application.conf")
-    println(s"config.root().render() = ${config.root().render()}")
+//    println(s"config.root().render() = ${config.root().render()}")
     val appName = config.getString("app.name")
     val appRef = config.getString("app.ver")
-    println(s"appName = ${appName}")
-    println(s"appRef = ${appRef}")
+//    println(s"appName = ${appName}")
+//    println(s"appRef = ${appRef}")
     assertNoDiff(appName, "app-name")
     assertNoDiff(appRef, "ref-ver")
   }

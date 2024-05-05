@@ -4,13 +4,9 @@ class SystemPropertiesSuite extends munit.FunSuite {
 
   test("SystemProperties"){
     val config = ConfigFactory.load()
-//    println(s"config.root().render() = ${config.root().render()}")
-    println(s"""System property = [${System.getProperty("user.home")}]""")
-    println(s"""System http.nonProxyHosts = [${System.getProperty("http.nonProxyHosts")}]""")
-    println(s"""Config user.home = [${config.getString("user.home")}]""")
-    println(s"""Config http.nonProxyHosts = [${config.hasPath("http.nonProxyHosts")}]""")
-    if config.hasPath("http.nonProxyHosts") then
-      println(s"""config.path() = ${config.getString("http.nonProxyHosts")}""")
+    assertNoDiff(System.getProperty("user.name"), config.getString("user.name"))
+    assertEquals(System.getProperty("http.nonProxyHosts") == null, !config.hasPath("http.nonProxyHosts"))
+    assertEquals(System.getProperty("http.nonProxyHosts") != null, config.hasPath("http.nonProxyHosts"))
   }
 
 }
