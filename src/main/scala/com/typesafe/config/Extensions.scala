@@ -219,7 +219,7 @@ extension (config: Config)
    * @param path
    * @return None if list is empty
    */
-  def getDoubleList(path: String): Option[List[Double]] =
+  def getDoubleListOpt(path: String): Option[List[Double]] =
     if !config.hasPathOrNull(path) || config.getIsNull(path) then None
     else
       Some(config.getDoubleList(path)
@@ -233,7 +233,7 @@ extension (config: Config)
    * @param path
    * @return None if list is empty
    */
-  def getNumberList(path: String): Option[List[Number]] =
+  def getNumberListOpt(path: String): Option[List[Number]] =
     if !config.hasPathOrNull(path) || config.getIsNull(path) then None
     else
       Some(config.getNumberList(path)

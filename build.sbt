@@ -1,4 +1,4 @@
-val scala3Version = "3.3.3"
+val scala3Version = "3.5.0"
 
 //https://www.scala-sbt.org/1.x/docs/Publishing.html
 ThisBuild / versionScheme := Some("early-semver")
@@ -8,7 +8,7 @@ lazy val configExt = project
   .settings(
     organization := "com.greenfossil",
     name := "typesafe-config-ext",
-    version := "1.0.4",
+    version := "1.1.0-RC1",
     scalaVersion := scala3Version,
 
     libraryDependencies ++= Seq(
