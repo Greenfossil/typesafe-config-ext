@@ -8,7 +8,7 @@ lazy val configExt = project
   .settings(
     organization := "com.greenfossil",
     name := "typesafe-config-ext",
-    version := "1.1.0-RC1",
+    version := "1.1.0",
     scalaVersion := scala3Version,
 
     libraryDependencies ++= Seq(
