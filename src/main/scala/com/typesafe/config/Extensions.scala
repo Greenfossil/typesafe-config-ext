@@ -104,7 +104,7 @@ extension (config: Config)
    * @return None if non declared or null
    */
   def getBooleanOpt(path: String): Option[Boolean] =
-    if config.getIsNull(path) || config.getIsNull(path) then None else Option(config.getBoolean(path))
+    if !config.hasPathOrNull(path) || config.getIsNull(path) then None else Option(config.getBoolean(path))
 
   /**
    *
