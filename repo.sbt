@@ -1,53 +1,34 @@
-//ThisBuild / organizationName := "Greenfossil Pte Ltd"
-//ThisBuild / organizationHomepage := Some(url("https://greenfossil.com/"))
-//
-//ThisBuild / developers := List(
-//  Developer(
-//    "greenfossil",
-//    "Greenfossil Pte Ltd",
-//    "devadmin@greenfossil.com",
-//    url("https://github.com/Greenfossil")
-//  )
-//)
-//
-//ThisBuild / licenses := List(
-//  "Apache 2" -> new URL("https://www.apache.org/licenses/LICENSE-2.0.txt")
-//)
-//
-// Remove all additional repository other than Maven Central from POM
-//ThisBuild / pomIncludeRepository := { _ => false }
-//
-//ThisBuild / publishTo := {
-//  // For accounts created after Feb 2021:
-//  val nexus = "https://central.sonatype.com/repository/"
-//  if (isSnapshot.value) Some("snapshots" at nexus + "maven-snapshots/")
-//  else Some("releases" at nexus + "central-staging/")
-//}
-//
-//val username = sys.env.getOrElse("PUBLISH_USER", "")
-//val password = sys.env.getOrElse("PUBLISH_PASSWORD", "")
-//
-//ThisBuild / credentials += Credentials(
-//  "Sonatype Nexus Repository Manager", "central.sonatype.com", username, password
-//)
-//
-//ThisBuild / publishMavenStyle := true
+ThisBuild / organizationName := "Greenfossil Pte Ltd"
+ThisBuild / organizationHomepage := Some(url("https://greenfossil.com/"))
 
-inThisBuild(List(
-  organization := "Greenfossil Pte Ltd",
-  homepage := Some(url("https://greenfossil.com/")),
-  // Alternatively License.Apache2 see https://github.com/sbt/librarymanagement/blob/develop/core/src/main/scala/sbt/librarymanagement/License.scala
-  licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
-  developers := List(
-    Developer(
-      "greenfossil",
-      "Greenfossil Pte Ltd",
-      "devadmin@greenfossil.com",
-      url("https://github.com/Greenfossil")
-    )
+ThisBuild / developers := List(
+  Developer(
+    "greenfossil",
+    "Greenfossil Pte Ltd",
+    "devadmin@greenfossil.com",
+    url("https://github.com/Greenfossil")
   )
-))
+)
 
-import xerial.sbt.Sonatype.sonatypeCentralHost
+ThisBuild / licenses := List(
+  "Apache 2" -> new URL("https://www.apache.org/licenses/LICENSE-2.0.txt")
+)
 
-ThisBuild / sonatypeCredentialHost := sonatypeCentralHost
+// Remove all additional repository other than Maven Central from POM
+ThisBuild / pomIncludeRepository := { _ => false }
+
+ThisBuild / publishTo := {
+  // For accounts created after Feb 2021:
+  val nexus = "https://central.sonatype.com/"
+  if (isSnapshot.value) Some("snapshots" at nexus + "repository/maven-snapshots/")
+  else Some("releases" at nexus/* + "repository/central-staging/"*/)
+}
+
+val username = sys.env.getOrElse("PUBLISH_USER", "")
+val password = sys.env.getOrElse("PUBLISH_PASSWORD", "")
+
+ThisBuild / credentials += Credentials(
+  "Sonatype Nexus Repository Manager", "central.sonatype.com", username, password
+)
+
+ThisBuild / publishMavenStyle := true

@@ -7,7 +7,6 @@ on:
 
 jobs:
   publish:
-    if: false  # ⛔ prevents this job from ever running
     uses: Greenfossil/.github/.github/workflows/publish-release.yml@main
     secrets: inherit
       
