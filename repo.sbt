@@ -21,14 +21,14 @@ ThisBuild / publishTo := {
   // For accounts created after Feb 2021:
   val nexus = "https://central.sonatype.com/repository/"
   if (isSnapshot.value) Some("snapshots" at nexus + "maven-snapshots/")
-  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+  else Some("releases" at nexus + "central-staging/")
 }
 
 val username = sys.env.getOrElse("PUBLISH_USER", "")
 val password = sys.env.getOrElse("PUBLISH_PASSWORD", "")
 
 ThisBuild / credentials += Credentials(
-  "Sonatype Nexus Repository Manager", "s01.oss.sonatype.org", username, password
+  "Sonatype Nexus Repository Manager", "central.sonatype.com", username, password
 )
 
 ThisBuild / publishMavenStyle := true
