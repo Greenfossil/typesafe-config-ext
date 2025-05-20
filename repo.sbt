@@ -20,7 +20,7 @@ ThisBuild / pomIncludeRepository := { _ => false }
 ThisBuild / publishTo := {
   // For accounts created after Feb 2021:
   val nexus = "https://central.sonatype.com/repository/"
-  if (isSnapshot.value) Some("snapshots" at nexus + "maven-snapshots")
+  if (isSnapshot.value) Some("snapshots" at nexus + "maven-snapshots/")
   else Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
 
