@@ -19,9 +19,9 @@ ThisBuild / pomIncludeRepository := { _ => false }
 
 ThisBuild / publishTo := {
   // For accounts created after Feb 2021:
-  val nexus = "https://central.sonatype.com/repository/"
-  if (isSnapshot.value) Some("snapshots" at nexus + "maven-snapshots/")
-  else Some("releases" at nexus + "central-publishing/")
+  //https://central.sonatype.org/publish/publish-portal-ossrh-staging-api/#plugins-tested-for-compatibility
+  if (isSnapshot.value) Some("snapshots" at "https://central.sonatype.com/repository/maven-snapshots/")
+  else Some("releases" at "https://ossrh-staging-api.central.sonatype.com/service/local/")
 }
 
 val username = sys.env.getOrElse("PUBLISH_USER", "")
