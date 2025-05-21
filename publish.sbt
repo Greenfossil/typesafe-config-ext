@@ -1,5 +1,3 @@
-//https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html
-
 ThisBuild / organizationName := "Greenfossil Pte Ltd"
 ThisBuild / organizationHomepage := Some(url("https://greenfossil.com/"))
 
@@ -37,23 +35,20 @@ ThisBuild / publishTo := {
   else localStaging.value
 }
 
-val username = sys.env.getOrElse("PUBLISH_USER", "")
-val password = sys.env.getOrElse("PUBLISH_PASSWORD", "")
+ThisBuild / credentials += {
+  val ghCredentials = for {
+    user <- sys.env.get("PUBLISH_USER").filter(_.nonEmpty)
+    pass <- sys.env.get("PUBLISH_PASSWORD").filter(_.nonEmpty)
+  } yield Credentials("Sonatype Nexus Repository Manager", "central.sonatype.com", user, pass)
 
-//ThisBuild / credentials += Credentials(Path.userHome / ".sbt" / "sonatype_central_credentials")
+  val fileCredentials = {
+    val credFile = Path.userHome / ".sbt" / "sonatype_central_credentials"
+    if (credFile.exists) Some(Credentials(credFile)) else None
+  }
 
-ThisBuild / credentials += Credentials(
-  "Sonatype Nexus Repository Manager", "central.sonatype.com", username, password
-)
-
-credentials += {
-//  val file = Path.userHome / ".sbt" / "sonatype_central_credentials"
-//  if (file.exists) Credentials(file)
-//  else
-  Credentials(
-    "Sonatype Nexus Repository Manager",
-    "central.sonatype.com",
-    sys.env.getOrElse("PUBLISH_USER", ""),
-    sys.env.getOrElse("PUBLISH_PASSWORD", "")
-  )
+  ghCredentials
+    .orElse(fileCredentials)
+    .getOrElse {
+      Credentials("Sonatype Nexus Repository Manager", "central.sonatype.com", "", "")
+    }
 }
