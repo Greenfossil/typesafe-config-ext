@@ -47,9 +47,10 @@ ThisBuild / credentials += Credentials(
 )
 
 credentials += {
-  val file = Path.userHome / ".sbt" / "sonatype_central_credentials"
-  if (file.exists) Credentials(file)
-  else Credentials(
+//  val file = Path.userHome / ".sbt" / "sonatype_central_credentials"
+//  if (file.exists) Credentials(file)
+//  else
+  Credentials(
     "Sonatype Nexus Repository Manager",
     "central.sonatype.com",
     sys.env.getOrElse("PUBLISH_USER", ""),
