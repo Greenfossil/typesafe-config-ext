@@ -15,7 +15,7 @@ ThisBuild / homepage := Some(url("https://github.com/Greenfossil/typesafe-config
 ThisBuild / description := "A Scala 3 extension for Typesafe Config library"
 
 ThisBuild / licenses := List(
-  "Apache 2" -> new URL("https://www.apache.org/licenses/LICENSE-2.0.txt")
+  "Apache 2" -> url("https://www.apache.org/licenses/LICENSE-2.0.txt")
 )
 
 // Remove all additional repository other than Maven Central from POM
