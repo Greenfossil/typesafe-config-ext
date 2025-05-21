@@ -40,7 +40,7 @@ ThisBuild / publishTo := {
 val username = sys.env.getOrElse("PUBLISH_USER", "")
 val password = sys.env.getOrElse("PUBLISH_PASSWORD", "")
 
-ThisBuild / credentials += Credentials(Path.userHome / ".sbt" / "sonatype_central_credentials")
+//ThisBuild / credentials += Credentials(Path.userHome / ".sbt" / "sonatype_central_credentials")
 
 ThisBuild / credentials += Credentials(
   "Sonatype Nexus Repository Manager", "central.sonatype.com", username, password
